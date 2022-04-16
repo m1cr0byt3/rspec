@@ -1,4 +1,5 @@
 AllCops:
+  Max: 100
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
