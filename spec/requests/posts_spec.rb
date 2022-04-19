@@ -33,6 +33,11 @@ RSpec.describe 'Posts', type: :request do
       payload = JSON.parse(response.body)
       expect(payload).to_not be_empty
       expect(payload['id']).to eq(post.id)
+      expect(payload['title']).to eq(post.title)
+      expect(payload['content']).to eq(post.content)
+      expect(payload['author']['name']).to eq(post.id)
+      expect(payload['author']['email']).to eq(post.id)
+      expect(payload['author']['id']).to eq(post.id)
       expect(response).to have_http_status(200)
     end
   end
@@ -42,7 +47,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'should create a post' do
       req_payload = {
-        post: { title: 'titulo', content: 'content', published: false,  user_id: user.id }
+        post: { title: 'titulo', content: 'content', published: false, user_id: user.id }
       }
       # POST HTTP
       post '/posts', params: req_payload
@@ -72,7 +77,7 @@ RSpec.describe 'Posts', type: :request do
   describe 'PUT /posts/{id}' do
     let!(:article) { create(:post) }
 
-    it 'should create a post' do
+    it 'should update a post' do
       req_payload = {
         post: { title: 'titulo', content: 'content', published: true }
       }
