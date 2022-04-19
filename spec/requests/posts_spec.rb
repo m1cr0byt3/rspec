@@ -35,9 +35,10 @@ RSpec.describe 'Posts', type: :request do
       expect(payload['id']).to eq(post.id)
       expect(payload['title']).to eq(post.title)
       expect(payload['content']).to eq(post.content)
-      expect(payload['author']['name']).to eq(post.id)
-      expect(payload['author']['email']).to eq(post.id)
-      expect(payload['author']['id']).to eq(post.id)
+      expect(payload['published']).to eq(post.published)
+      expect(payload['author']['name']).to eq(post.user.name)
+      expect(payload['author']['email']).to eq(post.user.email)
+      expect(payload['author']['id']).to eq(post.user.id)
       expect(response).to have_http_status(200)
     end
   end
