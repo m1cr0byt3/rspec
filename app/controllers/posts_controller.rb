@@ -2,11 +2,10 @@
 
 # Posts
 class PostsController < ApplicationController
- 
-
   # GET /posts
   def index
     @posts = Post.where(published: true)
+    @posts = PostsSearchService.search(@posts, params[:search]) if params[:search].present?
     render json: @posts, status: :ok
   end
 

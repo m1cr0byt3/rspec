@@ -7,4 +7,10 @@ FactoryBot.define do
     published { !rand(0..1).zero? }
     user
   end
+  factory :published_post, class: 'Post' do
+    title { Faker::Lorem.sentence }
+    content { Faker::Lorem.paragraph }
+    published { true }
+    user
+  end
 end
