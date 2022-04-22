@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Posts
 class PostsController < ApplicationController
   # GET /posts
