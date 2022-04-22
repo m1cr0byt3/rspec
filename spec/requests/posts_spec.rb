@@ -20,7 +20,7 @@ RSpec.describe 'Posts', type: :request do
     let!(:curso_rails) { create(:published_post, title: 'Curso Rails') }
 
     it 'should filter posts by title' do
-      get '/posts?search=Hola'
+      get '/posts?search=Hello'
       payload = JSON.parse(response.body)
       expect(payload).to_not be_empty
       expect(payload.size).to eq(2)
